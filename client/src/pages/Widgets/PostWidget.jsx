@@ -23,11 +23,10 @@ const PostWidget = ({
     const dispatch = useDispatch()
     const token = useSelector((state) => state.token)
     const loggedInUserId = useSelector((state) => state.user._id)
-    const isLiked = Boolean(likes[loggedInUserId])
-    const likeCount = Object.keys(likes).length
+    const isLiked = Boolean(likes[loggedInUserId]);
+    const likeCount = Object.keys(likes).length;
 
     const main = palette.neutral.main;
-    const medium = palette.neutral.main;
     const primary = palette.primary.main;
     
     const patchLike = async() => {
@@ -38,9 +37,6 @@ const PostWidget = ({
         })
 
         const updatedPost = await response.json();
-        console.log(loggedInUserId)
-        console.log(updatedPost)
-        console.log(isLiked)
         dispatch(setPost({post: updatedPost}))
     }
 
