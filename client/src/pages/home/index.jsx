@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import UserWidget from 'pages/Widgets/UserWidget';
 import MyPostWidget from 'pages/Widgets/MyPostWidget';
 import PostsWidget from 'pages/Widgets/PostsWidget';
+import AdWidget from 'pages/Widgets/AdWidget';
+import FriendListWidget from 'pages/Widgets/FriendListWidget';
 
 const Home = () => {
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
@@ -22,7 +24,10 @@ const Home = () => {
         </Box>
         {isNonMobile && (
           <Box flexBasis="25%">
-            
+            <AdWidget />
+            <Box m="2rem 0">
+              <FriendListWidget userId={_id}/>
+            </Box>
           </Box>
         )}
       </Box>
