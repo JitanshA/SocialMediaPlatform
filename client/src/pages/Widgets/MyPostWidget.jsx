@@ -5,17 +5,18 @@ import {
     GifBoxOutlined,
     ImageOutlined,
     MicOffOutlined,
-    MoreHorizOutlined
+    MoreHorizOutlined,
+    ConstructionOutlined
 } from "@mui/icons-material"
 import { Box, Typography, Divider, useTheme, Button, InputBase, IconButton, useMediaQuery } from "@mui/material"
 import UserImage from "components/UserImage"
 import FlexBetween from "components/FlexBetween"
 import WidgetWrapper from "components/WidgetWrapper"
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector"
+import { useSelector} from "react-redux/es/hooks/useSelector"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import Dropzone from "react-dropzone"
-import { setPosts } from "state"
+import { setPosts } from "state/index.js"
 
 const MyPostWidget = ({ picturePath }) => {
     const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const MyPostWidget = ({ picturePath }) => {
     const[post, setPost] = useState("");
     const { palette } = useTheme();
     const { _id } = useSelector((state) => state.user);
-    const { token } = useSelector((state) => state.token);
+    const token = useSelector((state) => state.token);
     const isNonMobile = useMediaQuery("(min-width: 1000px)");
     const mediumMain = palette.neutral.mediumMain;
     const medium = palette.neutral.medium;
@@ -38,7 +39,7 @@ const MyPostWidget = ({ picturePath }) => {
             formData.append("picturePath", image.name);
         }
 
-        const response = await fetch(`http://localhost:3001/users/${_id}`, {
+        const response = await fetch(`http://localhost:3001/posts`, {
             method: "POST",
             headers: { Authorization: `Bearer ${token}`},
             body: formData
@@ -46,6 +47,7 @@ const MyPostWidget = ({ picturePath }) => {
 
         const posts = await response.json();
         dispatch(setPosts({ posts }));
+
         setImage(null);
         setPost("");
     }

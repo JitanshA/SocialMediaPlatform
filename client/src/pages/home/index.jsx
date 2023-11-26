@@ -4,6 +4,7 @@ import Navbar from 'pages/navbar'
 import { useSelector } from 'react-redux';
 import UserWidget from 'pages/Widgets/UserWidget';
 import MyPostWidget from 'pages/Widgets/MyPostWidget';
+import PostsWidget from 'pages/Widgets/PostsWidget';
 
 const Home = () => {
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
@@ -17,6 +18,7 @@ const Home = () => {
         </Box>
         <Box flexBasis={isNonMobile ? "40%": undefined} mt={isNonMobile ? undefined: "2rem"}>
           <MyPostWidget picturePath={picturePath} />
+          <PostsWidget userId={_id} />
         </Box>
         {isNonMobile && (
           <Box flexBasis="25%">

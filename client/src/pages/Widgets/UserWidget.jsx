@@ -7,7 +7,7 @@ import { Box, Typography, Divider, useTheme } from "@mui/material"
 import UserImage from "components/UserImage"
 import FlexBetween from "components/FlexBetween"
 import WidgetWrapper from "components/WidgetWrapper"
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector"
+import { useSelector } from "react-redux/es/hooks/useSelector"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -89,11 +89,11 @@ const UserWidget = ({userId, picturePath }) => {
 
                 <Box p="1rem 0">
                     <FlexBetween mb="0.5">
-                        <Typography color={{medium}}>Who's viewed your profile</Typography>
+                        <Typography color={medium}>Who's viewed your profile</Typography>
                         <Typography color={main} fontWeight="450">{viewedProfile}</Typography>
                     </FlexBetween>
                     <FlexBetween>
-                        <Typography color={{medium}}>Impressions of your post</Typography>
+                        <Typography color={medium}>Impressions of your post</Typography>
                         <Typography color={main} fontWeight="450">{impressions}</Typography>
                     </FlexBetween>
                 </Box>
